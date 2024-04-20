@@ -14,7 +14,7 @@ export default function Signup() {
       .post("http://localhost:3001/register", { name, email, password })
       .then((result) => {
         console.log(result);
-        navigate("/login");
+        navigate("/");
       })
       .catch((err) => console.log(err));
   };
@@ -68,7 +68,7 @@ export default function Signup() {
         <p>Already have an account</p>
 
         <Link
-          to="/login"
+          to="/"
           className="btn btn-default border w-100 bg-light rounded-10 text-decoration-none"
         >
           Login
