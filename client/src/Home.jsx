@@ -200,7 +200,7 @@ const Calendar = () => {
             </ul>
 
             <Link
-              to="/"
+              to="/login"
               className="btn btn-primary d-flex align-items-center gap-3"
               type="submit"
               data-bs-toggle="modal"

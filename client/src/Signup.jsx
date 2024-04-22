@@ -68,7 +68,7 @@ export default function Signup() {
         <p>Already have an account</p>
 
         <Link
-          to="/"
+          to="/login"
           className="btn btn-default border w-100 bg-light rounded-10 text-decoration-none"
         >
           Login
