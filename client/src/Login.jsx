@@ -26,19 +26,6 @@ export default function Login() {
       <div className="bg-white p-3 rounded w-25">
         <h2>Login</h2>
         <form onSubmit={handleSubmit}>
-          {/* <div className="mb-3">
-            <label htmlFor="email">
-              <strong>Name</strong>
-            </label>
-            <input
-              type="text"
-              className="form-control rounded-10"
-              placeholder="Enter Name"
-              autoComplete="off"
-              name="email"
-              onChange={(e) => setName(e.target.value)}
-            />
-          </div> */}
           <div className="mb-3">
             <label htmlFor="email">
               <strong>Email</strong>
