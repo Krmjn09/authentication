@@ -5,7 +5,7 @@ import FeatureCard from "../components/feature-card";
 import Question1 from "../components/question1";
 import "./Chronicles.css";
 // importScripts from "./scripts";
-// import { useState } from "react";
+import { useState } from "react";
 
 const Chronicles = () => {
   return (
