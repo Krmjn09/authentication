@@ -173,7 +173,7 @@ const Chronicles = () => {
               {/* <button className="buttonFlat">Learn More →</button> */}
               <button
                 className="buttonFilled"
-                onClick={() => window.scrollTo({ top: 1000 })}
+                onClick={() => window.scrollTo({ top: 2250 })}
               >
                 Learn More →
               </button>
