@@ -11,7 +11,7 @@ const Chronicles = () => {
   return (
     <div className="home-container">
       <Helmet>
-        <title>Nautical Lean Dog</title>
+        <title>Chronicles</title>
         <meta property="og:title" content="Nautical Lean Dog" />
       </Helmet>
       <div className="home-header">
@@ -19,7 +19,7 @@ const Chronicles = () => {
           data-thq="thq-navbar"
           className="navbarContainer home-navbar-interactive"
         >
-          <span className="logo">JOURNALY</span>
+          <span className="logo">CHRONICLES</span>
           <div data-thq="thq-navbar-nav" className="home-desktop-menu">
             <nav className="home-links"></nav>
             <div className="home-buttons">
@@ -42,7 +42,7 @@ const Chronicles = () => {
           >
             <div className="home-nav">
               <div className="home-top">
-                <span className="logo">JOURNALY</span>
+                <span className="logo">CHRONICLES</span>
                 <div data-thq="thq-close-menu" className="home-close-menu">
                   <svg
                     viewBox="0 0 1024 1024"
@@ -163,8 +163,20 @@ const Chronicles = () => {
               </span>
             </span>
             <div className="home-btn-group">
-              <button className="buttonFilled">Get Started</button>
-              <button className="buttonFlat">Learn More →</button>
+              <button
+                className="buttonFilled"
+                onClick={() => window.scrollTo({ top: 400 })}
+              >
+                Get Started
+              </button>
+
+              {/* <button className="buttonFlat">Learn More →</button> */}
+              <button
+                className="buttonFilled"
+                onClick={() => window.scrollTo({ top: 1000 })}
+              >
+                Learn More →
+              </button>
             </div>
           </div>
         </div>
