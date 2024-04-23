@@ -316,7 +316,7 @@ const Calendar = () => {
                         key={i}
                         className={`calendar-day btn text-center fs-5 ${
                           isSelected(day)
-                            ? "bg-teal-500 text-white" // More aesthetic primary color (teal)
+                            ? "bg-teal-500 text-primary" // More aesthetic primary color (teal)
                             : isCurrentMonth
                             ? "btn-outline-teal-500" // Teal outline for current month
                             : "btn-light text-muted" // Style for previous/next month dates

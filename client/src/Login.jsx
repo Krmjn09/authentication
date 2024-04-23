@@ -16,6 +16,37 @@ const Login = () => {
       justifyContent: "center", // Centers content vertically within the container (optional)
       alignItems: "center", // Centers content horizontally within the container (optional)
     },
+    navbar: {
+      backgroundColor: "#191b5b", // Royal blue
+      color: "white", // Light text for contrast
+      padding: "1rem 1.5rem",
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
+    },
+    navbarBrand: {
+      fontSize: "1.2rem", // Slightly larger font for brand name
+      fontWeight: "bold", // Add boldness for emphasis
+    },
+    navLink: {
+      textDecoration: "none",
+      color: "inherit", // Inherit color from navbar
+      marginRight: "1.5rem", // Spacing between links
+      transition: "color 0.2s ease-in-out", // Smooth hover effect
+    },
+    navLinkActive: {
+      color: "#2942C8", // Darker royal blue for active link
+    },
+    navBtn: {
+      backgroundColor: "#EB370F", // Darker royal blue for button
+      color: "white",
+      padding: "0.75rem 1.5rem", // Adjust padding for button size
+      borderRadius: "5px", // Rounded corners for aesthetics
+      transition: "background-color 0.2s ease-in-out", // Smooth button hover effect
+    },
+    navBtnHover: {
+      backgroundColor: "#3f5baf", // Slightly darker blue on hover
+    },
   };
   // const [name, setName] = useState();
   const [email, setEmail] = useState();
@@ -36,6 +67,22 @@ const Login = () => {
   };
   return (
     <>
+      <nav style={styles.navbar}>
+        <a href="#" className="navbar-brand" style={styles.navbarBrand}>
+          Chronicles
+        </a>
+        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+          <li className="nav-item">
+            {/* <a className={`nav-link ${styles.navLinkActive}`} href="#">
+              Home
+            </a> */}
+          </li>
+          {/* Add more links here as needed */}
+        </ul>
+        {/* <Link to="/login" style={styles.navBtn}>
+          Sign Out
+        </Link> */}
+      </nav>
       <div style={styles.container}>
         <div className="d-flex justify-content-center align-items-center  vh-100 vw-100">
           <div className="bg-white p-3 rounded w-25">

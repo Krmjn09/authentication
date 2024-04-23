@@ -18,7 +18,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/home" element={<Home />} />
         <Route path="/home/:date" element={<JournalPage />} />
-        <Route path="/chronicles" element={<Chronicles />} />
+        <Route path="/" element={<Chronicles />} />
         <Route path="*" element={<NotFound />} />
         {/* <Redirect from="/" to="/login" /> */}
       </Routes>
