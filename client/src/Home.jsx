@@ -270,7 +270,7 @@ const Calendar = () => {
       <div style={styles.container}>
         <div className="container d-flex justify-content-center align-items-center vh-100">
           <div
-            className="calendar card shadow rounded overflow-hidden"
+            className="calendar-card shadow rounded overflow-hidden"
             style={{
               background: `linear-gradient(to right, #f7f9fb, #e2e6ea)`, // Lighter gradient
               width: "550px", // Adjust width as desired
