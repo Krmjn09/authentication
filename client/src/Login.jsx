@@ -79,9 +79,9 @@ const Login = () => {
           </li>
           {/* Add more links here as needed */}
         </ul>
-        {/* <Link to="/login" style={styles.navBtn}>
-          Sign Out
-        </Link> */}
+        <Link to="/" style={styles.navBtn}>
+          Home
+        </Link>
       </nav>
       <div style={styles.container}>
         <div className="d-flex justify-content-center align-items-center  vh-100 vw-100">
@@ -113,9 +113,13 @@ const Login = () => {
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
-              <button type="submit" className="btn btn-primary rounded-10">
+              <Link
+                to="/home"
+                type="submit"
+                className="btn btn-primary rounded-10"
+              >
                 Login
-              </button>
+              </Link>
             </form>
             <p>Already have an account</p>
 

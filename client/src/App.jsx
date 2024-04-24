@@ -5,11 +5,11 @@ import Signup from "./Signup";
 import "./style.css";
 import Chronicles from "./views/Chronicles";
 import NotFound from "./views/not-found";
-
+import "./input.css";
+import "./output.css";
 import Login from "./Login";
 import Home from "./Home";
-import JournalPage from "./JournalPage";
-
+import JournalPage from "./Journal";
 function App() {
   return (
     <BrowserRouter>
