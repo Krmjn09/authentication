@@ -2,6 +2,69 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 // import Card from "react-bootstrap/Card";
+import ChatBot from "react-simple-chatbot";
+import { ThemeProvider } from "styled-components";
+
+const steps = [
+  {
+    id: "0",
+    message: "Hey Geek!",
+
+    // This calls the next id
+    // i.e. id 1 in this case
+    trigger: "1",
+  },
+  {
+    id: "1",
+
+    // This message appears in
+    // the bot chat bubble
+    message: "Please write your username",
+    trigger: "2",
+  },
+  {
+    id: "2",
+
+    // Here we want the user
+    // to enter input
+    user: true,
+    trigger: "3",
+  },
+  {
+    id: "3",
+    message: " hi {previousValue}, how can I help you?",
+    trigger: 4,
+  },
+  {
+    id: "4",
+    options: [
+      // When we need to show a number of
+      // options to choose we create alist
+      // like this
+      { value: 1, label: "View Courses" },
+      { value: 2, label: "Read Articles" },
+    ],
+    end: true,
+  },
+];
+
+// Creating our own theme
+const theme = {
+  background: "#efdcf9",
+  headerBgColor: "#36013f",
+  headerFontSize: "20px",
+  botBubbleColor: "#05445e",
+  headerFontColor: "white",
+  botFontColor: "white",
+  userBubbleColor: "#323b36",
+  userFontColor: "white",
+};
+
+// Set some properties of the bot
+const config = {
+  botAvatar: "./chatbotimage.png",
+  floating: true,
+};
 
 import "./Journal.css";
 const JournalPage = () => {
@@ -16,8 +79,8 @@ const JournalPage = () => {
       <nav>
         <div className="bg-gray-800 text-white fixed top-0 left-0 w-full z-60">
           <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-            <Link to="/" className="text-xl font-bold">
-              Your Brand Name
+            <Link to="/" className="text-xl font-bold text-white ">
+              Chronicles
             </Link>
             <nav className="hidden md:flex space-x-4">
               <Link to="/" className="hover:text-gray-400">
@@ -123,7 +186,7 @@ const JournalPage = () => {
               Lorem Ipsum is simply dummy text from the printing and typeseting
               industry
             </p>
-            <button>Read More</button>
+            <butto>Read More</butto>
           </div>
         </div>
         <div className="card">
@@ -159,6 +222,17 @@ const JournalPage = () => {
             <button>Read More</button>
           </div>
         </div>
+      </div>
+      <div className="App">
+        <ThemeProvider theme={theme}>
+          <ChatBot
+            // This appears as the header
+            // text for the chat bot
+            headerTitle="Hello! I am emo ^_^"
+            steps={steps}
+            {...config}
+          />
+        </ThemeProvider>
       </div>
     </>
   );
