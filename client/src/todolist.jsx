@@ -1,338 +1,422 @@
-// import React, { useState, useEffect } from "react";
+// // import React, { useState, useEffect } from "react";
 
-// const TodoList = () => {
-//   const [todos, setTodos] = useState([]);
-//   const [newTodo, setNewTodo] = useState("");
+// // const TodoList = () => {
+// //   const [todos, setTodos] = useState([]);
+// //   const [newTodo, setNewTodo] = useState("");
 
-//   useEffect(() => {
-//     // Load saved to-do list from localStorage when the component mounts
-//     const savedTodos = JSON.parse(localStorage.getItem("todos")) || [];
-//     setTodos(savedTodos);
-//   }, []);
+// //   useEffect(() => {
+// //     // Load saved to-do list from localStorage when the component mounts
+// //     const savedTodos = JSON.parse(localStorage.getItem("todos")) || [];
+// //     setTodos(savedTodos);
+// //   }, []);
 
-//   useEffect(() => {
-//     // Save the current to-do list to localStorage whenever it changes
-//     localStorage.setItem("todos", JSON.stringify(todos));
-//   }, [todos]);
+// //   useEffect(() => {
+// //     // Save the current to-do list to localStorage whenever it changes
+// //     localStorage.setItem("todos", JSON.stringify(todos));
+// //   }, [todos]);
 
-//   const addTodo = () => {
-//     if (newTodo.trim() === "") {
+// //   const addTodo = () => {
+// //     if (newTodo.trim() === "") {
+// //       return;
+// //     }
+
+// //     const newTask = {
+// //       id: Date.now(),
+// //       text: newTodo.trim(),
+// //       completed: false,
+// //     };
+
+// //     setTodos([...todos, newTask]);
+// //     setNewTodo("");
+// //   };
+
+// //   const toggleTodo = (id) => {
+// //     setTodos(
+// //       todos.map((todo) =>
+
+// //         todo.id === id ? { ...todo, completed: !todo.completed } : todo
+// //       )
+// //     );
+// //   };
+
+// //   const deleteTodo = (id) => {
+// //     setTodos(todos.filter((todo) => todo.id !== id));
+// //   };
+
+// //   return (
+// //     <div className="todo-list container mx-auto p-8 bg-gray-100 rounded shadow-md">
+// //       <h1 className="text-2xl font-bold text-center mb-4 text-blue-500">
+// //         To-Do List
+// //       </h1>
+// //       <div className="flex items-center mb-4">
+// //         <input
+// //           type="text"
+// //           placeholder="Add a new task..."
+// //           className="todo-input border p-2 w-full rounded focus:outline-blue-500 focus:ring-2 focus:ring-blue-500"
+// //           value={newTodo}
+// //           onChange={(e) => setNewTodo(e.target.value)}
+// //           onKeyPress={(e) => {
+// //             if (e.key === "Enter") {
+// //               addTodo(); // Add todo on Enter key press for faster interaction
+// //             }
+// //           }}
+// //         />
+// //         <button
+// //           className="bg-blue-500 text-white px-4 py-2 ml-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white"
+// //           onClick={addTodo}
+// //         >
+// //           Add
+// //         </button>
+// //       </div>
+// //       <ul className="todo-list list-none">
+// //         {todos.map((todo) => (
+// //           <li
+// //             key={todo.id}
+// //             className={`todo-item p-2 mb-2 border rounded flex justify-between items-center ${
+// //               todo.completed ? "line-through text-gray-500" : ""
+// //             }`}
+// //           >
+// //             <span onClick={() => toggleTodo(todo.id)} className="todo-text">
+// //               {todo.text}
+// //             </span>
+// //             <div className="flex items-center">
+// //               <button
+// //                 className="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white todo-delete"
+// //                 onClick={() => deleteTodo(todo.id)}
+// //               >
+// //                 Delete
+// //               </button>
+// //               <span
+// //                 className={`ml-2 text-sm font-light ${
+// //                   todo.completed ? "text-gray-400" : ""
+// //                 }`}
+// //               >
+// //                 {todo.completed ? "Completed" : "Pending"}
+// //               </span>
+// //             </div>
+// //           </li>
+// //         ))}
+// //       </ul>
+// //       <p className="text-center text-gray-500 mt-4">
+// //         Changes saved automatically.
+// //       </p>
+// //     </div>
+// //   );
+// // };
+
+// // export default TodoList;
+
+// import React, { useState } from "react";
+// import {
+//   MDBBtn,
+//   MDBCard,
+//   MDBCardBody,
+//   MDBCheckbox,
+//   MDBCol,
+//   MDBContainer,
+//   MDBInput,
+//   MDBListGroup,
+//   MDBListGroupItem,
+//   MDBRow,
+//   MDBTabs,
+//   MDBTabsContent,
+//   MDBTabsItem,
+//   MDBTabsLink,
+//   MDBTabsPane,
+// } from "mdb-react-ui-kit";
+
+// export default function TodoList() {
+//   const [active, setActive] = useState("tab1");
+
+//   const handleClick = (value) => {
+//     if (value === active) {
 //       return;
 //     }
 
-//     const newTask = {
-//       id: Date.now(),
-//       text: newTodo.trim(),
-//       completed: false,
-//     };
-
-//     setTodos([...todos, newTask]);
-//     setNewTodo("");
-//   };
-
-//   const toggleTodo = (id) => {
-//     setTodos(
-//       todos.map((todo) =>
-//         todo.id === id ? { ...todo, completed: !todo.completed } : todo
-//       )
-//     );
-//   };
-
-//   const deleteTodo = (id) => {
-//     setTodos(todos.filter((todo) => todo.id !== id));
+//     setActive(value);
 //   };
 
 //   return (
-//     <div className="todo-list container mx-auto p-8 bg-gray-100 rounded shadow-md">
-//       <h1 className="text-2xl font-bold text-center mb-4 text-blue-500">
-//         To-Do List
-//       </h1>
-//       <div className="flex items-center mb-4">
-//         <input
-//           type="text"
-//           placeholder="Add a new task..."
-//           className="todo-input border p-2 w-full rounded focus:outline-blue-500 focus:ring-2 focus:ring-blue-500"
-//           value={newTodo}
-//           onChange={(e) => setNewTodo(e.target.value)}
-//           onKeyPress={(e) => {
-//             if (e.key === "Enter") {
-//               addTodo(); // Add todo on Enter key press for faster interaction
-//             }
-//           }}
-//         />
-//         <button
-//           className="bg-blue-500 text-white px-4 py-2 ml-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white"
-//           onClick={addTodo}
-//         >
-//           Add
-//         </button>
+//     <>
+//       <div className="gradient-custom vh-100">
+//         <MDBContainer className="py-5 h-100">
+//           <MDBRow className="d-flex justify-content-center align-items-center">
+//             <MDBCol xl="10">
+//               <MDBCard>
+//                 <MDBCardBody className="p-5">
+//                   <div className="d-flex justify-content-center align-items-center mb-4">
+//                     <MDBInput
+//                       type="text"
+//                       id="form1"
+//                       label="New task..."
+//                       wrapperClass="flex-fill"
+//                     />
+//                     <MDBBtn type="submit" color="info" className="ms-2">
+//                       Add
+//                     </MDBBtn>
+//                   </div>
+//                   <MDBTabs className="mb-4 pb-2">
+//                     <MDBTabsItem>
+//                       <MDBTabsLink
+//                         onClick={() => handleClick("tab1")}
+//                         active={active === "tab1"}
+//                       >
+//                         All
+//                       </MDBTabsLink>
+//                     </MDBTabsItem>
+//                     <MDBTabsItem>
+//                       <MDBTabsLink
+//                         onClick={() => handleClick("tab2")}
+//                         active={active === "tab2"}
+//                       >
+//                         Active
+//                       </MDBTabsLink>
+//                     </MDBTabsItem>
+//                     <MDBTabsItem>
+//                       <MDBTabsLink
+//                         onClick={() => handleClick("tab3")}
+//                         active={active === "tab3"}
+//                       >
+//                         Completed
+//                       </MDBTabsLink>
+//                     </MDBTabsItem>
+//                   </MDBTabs>
+//                   <MDBTabsContent>
+//                     <MDBTabsPane show={active === "tab1"}>
+//                       <MDBListGroup className="mb-0">
+//                         <MDBListGroupItem
+//                           className=" d-flex align-items-center border-0 mb-2 rounded"
+//                           style={{ backgroundColor: "#f4f6f7" }}
+//                         >
+//                           {" "}
+//                           <MDBCheckbox
+//                             name="flexCheck"
+//                             value=""
+//                             id="flexCheck"
+//                             className="me-3"
+//                             defaultChecked
+//                           />
+//                           <s>Cras justo odio</s>
+//                         </MDBListGroupItem>
+//                         <MDBListGroupItem
+//                           className=" d-flex align-items-center border-0 mb-2 rounded"
+//                           style={{ backgroundColor: "#f4f6f7" }}
+//                         >
+//                           {" "}
+//                           <MDBCheckbox
+//                             name="flexCheck"
+//                             value=""
+//                             id="flexCheck"
+//                             className="me-3"
+//                             defaultChecked
+//                           />
+//                           <s>Dapibus ac facilisis in</s>
+//                         </MDBListGroupItem>
+//                         <MDBListGroupItem
+//                           className=" d-flex align-items-center border-0 mb-2 rounded"
+//                           style={{ backgroundColor: "#f4f6f7" }}
+//                         >
+//                           {" "}
+//                           <MDBCheckbox
+//                             name="flexCheck"
+//                             value=""
+//                             id="flexCheck"
+//                             className="me-3"
+//                           />
+//                           Morbi leo risus
+//                         </MDBListGroupItem>
+//                         <MDBListGroupItem
+//                           className=" d-flex align-items-center border-0 mb-2 rounded"
+//                           style={{ backgroundColor: "#f4f6f7" }}
+//                         >
+//                           {" "}
+//                           <MDBCheckbox
+//                             name="flexCheck"
+//                             value=""
+//                             id="flexCheck"
+//                             className="me-3"
+//                           />
+//                           Porta ac consectetur ac
+//                         </MDBListGroupItem>
+//                         <MDBListGroupItem
+//                           className=" d-flex align-items-center border-0 mb-2 rounded"
+//                           style={{ backgroundColor: "#f4f6f7" }}
+//                         >
+//                           {" "}
+//                           <MDBCheckbox
+//                             name="flexCheck"
+//                             value=""
+//                             id="flexCheck"
+//                             className="me-3"
+//                           />
+//                           Vestibulum at eros
+//                         </MDBListGroupItem>
+//                       </MDBListGroup>
+//                     </MDBTabsPane>
+//                     <MDBTabsPane show={active === "tab2"}>
+//                       <MDBListGroup className="mb-0">
+//                         <MDBListGroupItem
+//                           className=" d-flex align-items-center border-0 mb-2 rounded"
+//                           style={{ backgroundColor: "#f4f6f7" }}
+//                         >
+//                           {" "}
+//                           <MDBCheckbox
+//                             name="flexCheck"
+//                             value=""
+//                             id="flexCheck"
+//                             className="me-3"
+//                           />
+//                           Morbi leo risus
+//                         </MDBListGroupItem>
+//                         <MDBListGroupItem
+//                           className=" d-flex align-items-center border-0 mb-2 rounded"
+//                           style={{ backgroundColor: "#f4f6f7" }}
+//                         >
+//                           {" "}
+//                           <MDBCheckbox
+//                             name="flexCheck"
+//                             value=""
+//                             id="flexCheck"
+//                             className="me-3"
+//                           />
+//                           Porta ac consectetur ac
+//                         </MDBListGroupItem>
+//                         <MDBListGroupItem
+//                           className=" d-flex align-items-center border-0 mb-2 rounded"
+//                           style={{ backgroundColor: "#f4f6f7" }}
+//                         >
+//                           {" "}
+//                           <MDBCheckbox
+//                             name="flexCheck"
+//                             value=""
+//                             id="flexCheck"
+//                             className="me-3"
+//                           />
+//                           Vestibulum at eros
+//                         </MDBListGroupItem>
+//                       </MDBListGroup>
+//                     </MDBTabsPane>
+//                     <MDBTabsPane show={active === "tab3"}>
+//                       <MDBListGroup className="mb-0">
+//                         <MDBListGroupItem
+//                           className=" d-flex align-items-center border-0 mb-2 rounded"
+//                           style={{ backgroundColor: "#f4f6f7" }}
+//                         >
+//                           {" "}
+//                           <MDBCheckbox
+//                             name="flexCheck"
+//                             value=""
+//                             id="flexCheck"
+//                             className="me-3"
+//                             defaultChecked
+//                           />
+//                           <s>Cras justo odio</s>
+//                         </MDBListGroupItem>
+//                         <MDBListGroupItem
+//                           className=" d-flex align-items-center border-0 mb-2 rounded"
+//                           style={{ backgroundColor: "#f4f6f7" }}
+//                         >
+//                           {" "}
+//                           <MDBCheckbox
+//                             name="flexCheck"
+//                             value=""
+//                             id="flexCheck"
+//                             className="me-3"
+//                             defaultChecked
+//                           />
+//                           <s>Dapibus ac facilisis in</s>
+//                         </MDBListGroupItem>
+//                       </MDBListGroup>
+//                     </MDBTabsPane>
+//                   </MDBTabsContent>
+//                 </MDBCardBody>
+//               </MDBCard>
+//             </MDBCol>
+//           </MDBRow>
+//         </MDBContainer>
 //       </div>
-//       <ul className="todo-list list-none">
-//         {todos.map((todo) => (
-//           <li
-//             key={todo.id}
-//             className={`todo-item p-2 mb-2 border rounded flex justify-between items-center ${
-//               todo.completed ? "line-through text-gray-500" : ""
-//             }`}
-//           >
-//             <span onClick={() => toggleTodo(todo.id)} className="todo-text">
-//               {todo.text}
-//             </span>
-//             <div className="flex items-center">
-//               <button
-//                 className="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white todo-delete"
-//                 onClick={() => deleteTodo(todo.id)}
-//               >
-//                 Delete
-//               </button>
-//               <span
-//                 className={`ml-2 text-sm font-light ${
-//                   todo.completed ? "text-gray-400" : ""
-//                 }`}
-//               >
-//                 {todo.completed ? "Completed" : "Pending"}
-//               </span>
-//             </div>
-//           </li>
-//         ))}
-//       </ul>
-//       <p className="text-center text-gray-500 mt-4">
-//         Changes saved automatically.
-//       </p>
-//     </div>
+//     </>
 //   );
-// };
+// }
 
-// export default TodoList;
-
-
-import React, { useState } from "react";
+import React from "react";
 import {
-  MDBBtn,
   MDBCard,
   MDBCardBody,
-  MDBCheckbox,
+  MDBCardImage,
   MDBCol,
   MDBContainer,
-  MDBInput,
-  MDBListGroup,
-  MDBListGroupItem,
+  MDBIcon,
+  MDBRipple,
   MDBRow,
-  MDBTabs,
-  MDBTabsContent,
-  MDBTabsItem,
-  MDBTabsLink,
-  MDBTabsPane,
+  MDBTypography,
 } from "mdb-react-ui-kit";
 
-export default function TodoList() {
-  const [active, setActive] = useState("tab1");
-
-  const handleClick = (value) => {
-    if (value === active) {
-      return;
-    }
-
-    setActive(value);
-  };
-
+export default function CardUI() {
   return (
-    <section className="gradient-custom vh-100">
-      <MDBContainer className="py-5 h-100">
-        <MDBRow className="d-flex justify-content-center align-items-center">
-          <MDBCol xl="10">
-            <MDBCard>
-              <MDBCardBody className="p-5">
-                <div className="d-flex justify-content-center align-items-center mb-4">
-                  <MDBInput
-                    type="text"
-                    id="form1"
-                    label="New task..."
-                    wrapperClass="flex-fill"
-                  />
-                  <MDBBtn type="submit" color="info" className="ms-2">
-                    Add
-                  </MDBBtn>
+    <section className="vh-100" style={{ backgroundColor: "#eee" }}>
+      <div className="h-100">
+        <div className="justify-content-center align-items-center h-100">
+          <div md="8" lg="6" xl="4">
+            <div style={{ borderRadius: "10px" }}>
+              <MDBRipple
+                tag="div"
+                className="bg-image"
+                rippleColor="light"
+                style={{
+                  borderTopLeftRadius: "10px",
+                  borderTopRightRadius: "10px",
+                }}
+              >
+                {/* <MDBCardImage
+                  src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-weather/draw2.webp"
+                  className="w-100"
+                /> */}
+                <div
+                  className="mask"
+                  style={{ backgroundColor: "rgba(0,0,0,.45)" }}
+                >
+                  <div className="d-flex justify-content-between p-4">
+                    <a href="#!" className="text-white">
+                      <MDBIcon fas icon="chevron-left" size="lg" />
+                    </a>
+                    <a href="#!" className="text-white">
+                      <MDBIcon fas icon="cog" size="lg" />
+                    </a>
+                  </div>
+                  <div className="text-center text-white">
+                    <p className="h3 mb-4">Clear night</p>
+                    <p className="h5 mb-4">Detroit, US</p>
+                    <p className="display-2">
+                      <strong>20°C</strong>{" "}
+                    </p>
+                  </div>
                 </div>
-                <MDBTabs className="mb-4 pb-2">
-                  <MDBTabsItem>
-                    <MDBTabsLink
-                      onClick={() => handleClick("tab1")}
-                      active={active === "tab1"}
-                    >
-                      All
-                    </MDBTabsLink>
-                  </MDBTabsItem>
-                  <MDBTabsItem>
-                    <MDBTabsLink
-                      onClick={() => handleClick("tab2")}
-                      active={active === "tab2"}
-                    >
-                      Active
-                    </MDBTabsLink>
-                  </MDBTabsItem>
-                  <MDBTabsItem>
-                    <MDBTabsLink
-                      onClick={() => handleClick("tab3")}
-                      active={active === "tab3"}
-                    >
-                      Completed
-                    </MDBTabsLink>
-                  </MDBTabsItem>
-                </MDBTabs>
-                <MDBTabsContent>
-                  <MDBTabsPane show={active === "tab1"}>
-                    <MDBListGroup className="mb-0">
-                      <MDBListGroupItem
-                        className=" d-flex align-items-center border-0 mb-2 rounded"
-                        style={{ backgroundColor: "#f4f6f7" }}
-                      >
-                        {" "}
-                        <MDBCheckbox
-                          name="flexCheck"
-                          value=""
-                          id="flexCheck"
-                          className="me-3"
-                          defaultChecked
-                        />
-                        <s>Cras justo odio</s>
-                      </MDBListGroupItem>
-                      <MDBListGroupItem
-                        className=" d-flex align-items-center border-0 mb-2 rounded"
-                        style={{ backgroundColor: "#f4f6f7" }}
-                      >
-                        {" "}
-                        <MDBCheckbox
-                          name="flexCheck"
-                          value=""
-                          id="flexCheck"
-                          className="me-3"
-                          defaultChecked
-                        />
-                        <s>Dapibus ac facilisis in</s>
-                      </MDBListGroupItem>
-                      <MDBListGroupItem
-                        className=" d-flex align-items-center border-0 mb-2 rounded"
-                        style={{ backgroundColor: "#f4f6f7" }}
-                      >
-                        {" "}
-                        <MDBCheckbox
-                          name="flexCheck"
-                          value=""
-                          id="flexCheck"
-                          className="me-3"
-                        />
-                        Morbi leo risus
-                      </MDBListGroupItem>
-                      <MDBListGroupItem
-                        className=" d-flex align-items-center border-0 mb-2 rounded"
-                        style={{ backgroundColor: "#f4f6f7" }}
-                      >
-                        {" "}
-                        <MDBCheckbox
-                          name="flexCheck"
-                          value=""
-                          id="flexCheck"
-                          className="me-3"
-                        />
-                        Porta ac consectetur ac
-                      </MDBListGroupItem>
-                      <MDBListGroupItem
-                        className=" d-flex align-items-center border-0 mb-2 rounded"
-                        style={{ backgroundColor: "#f4f6f7" }}
-                      >
-                        {" "}
-                        <MDBCheckbox
-                          name="flexCheck"
-                          value=""
-                          id="flexCheck"
-                          className="me-3"
-                        />
-                        Vestibulum at eros
-                      </MDBListGroupItem>
-                    </MDBListGroup>
-                  </MDBTabsPane>
-                  <MDBTabsPane show={active === "tab2"}>
-                    <MDBListGroup className="mb-0">
-                      <MDBListGroupItem
-                        className=" d-flex align-items-center border-0 mb-2 rounded"
-                        style={{ backgroundColor: "#f4f6f7" }}
-                      >
-                        {" "}
-                        <MDBCheckbox
-                          name="flexCheck"
-                          value=""
-                          id="flexCheck"
-                          className="me-3"
-                        />
-                        Morbi leo risus
-                      </MDBListGroupItem>
-                      <MDBListGroupItem
-                        className=" d-flex align-items-center border-0 mb-2 rounded"
-                        style={{ backgroundColor: "#f4f6f7" }}
-                      >
-                        {" "}
-                        <MDBCheckbox
-                          name="flexCheck"
-                          value=""
-                          id="flexCheck"
-                          className="me-3"
-                        />
-                        Porta ac consectetur ac
-                      </MDBListGroupItem>
-                      <MDBListGroupItem
-                        className=" d-flex align-items-center border-0 mb-2 rounded"
-                        style={{ backgroundColor: "#f4f6f7" }}
-                      >
-                        {" "}
-                        <MDBCheckbox
-                          name="flexCheck"
-                          value=""
-                          id="flexCheck"
-                          className="me-3"
-                        />
-                        Vestibulum at eros
-                      </MDBListGroupItem>
-                    </MDBListGroup>
-                  </MDBTabsPane>
-                  <MDBTabsPane show={active === "tab3"}>
-                    <MDBListGroup className="mb-0">
-                      <MDBListGroupItem
-                        className=" d-flex align-items-center border-0 mb-2 rounded"
-                        style={{ backgroundColor: "#f4f6f7" }}
-                      >
-                        {" "}
-                        <MDBCheckbox
-                          name="flexCheck"
-                          value=""
-                          id="flexCheck"
-                          className="me-3"
-                          defaultChecked
-                        />
-                        <s>Cras justo odio</s>
-                      </MDBListGroupItem>
-                      <MDBListGroupItem
-                        className=" d-flex align-items-center border-0 mb-2 rounded"
-                        style={{ backgroundColor: "#f4f6f7" }}
-                      >
-                        {" "}
-                        <MDBCheckbox
-                          name="flexCheck"
-                          value=""
-                          id="flexCheck"
-                          className="me-3"
-                          defaultChecked
-                        />
-                        <s>Dapibus ac facilisis in</s>
-                      </MDBListGroupItem>
-                    </MDBListGroup>
-                  </MDBTabsPane>
-                </MDBTabsContent>
+              </MDBRipple>
+              <MDBCardBody className="p-4 text-center">
+                <a href="#!" className="text-body">
+                  <MDBIcon fas icon="chevron-up mb-4" size="lg" />
+                </a>
+                <div className="d-flex justify-content-between mb-3">
+                  <p className="h5 fw-normal">Yesterday</p>
+                  <p className="h5 fw-normal">
+                    <MDBIcon fas icon="sun pe-2" /> 23°C
+                  </p>
+                </div>
+                <div
+                  className="d-flex justify-content-between"
+                  style={{ color: "#aaa" }}
+                >
+                  <p className="h5 fw-normal">Tommorow</p>
+                  <p className="h5 fw-normal">
+                    <MDBIcon fas icon="cloud pe-2" /> 21°C
+                  </p>
+                </div>
               </MDBCardBody>
-            </MDBCard>
-          </MDBCol>
-        </MDBRow>
-      </MDBContainer>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }
