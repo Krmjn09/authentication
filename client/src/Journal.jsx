@@ -186,7 +186,9 @@ const JournalPage = () => {
               Lorem Ipsum is simply dummy text from the printing and typeseting
               industry
             </p>
-            <Link to={`/TodoList`}>Read More</Link>
+            <button>
+              <Link to={`/TodoList`}>Read More</Link>
+            </button>
           </div>
         </div>
         <div className="card">
