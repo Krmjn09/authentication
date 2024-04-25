@@ -11,6 +11,7 @@ import Login from "./Login";
 import Home from "./Home";
 import JournalPage from "./Journal";
 import TodoList from "./todolist";
+import { MDBContainer, MDBRow } from 'mdb-react-ui-kit';
 function App() {
   return (
     <BrowserRouter>
