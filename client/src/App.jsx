@@ -10,7 +10,7 @@ import "./output.css";
 import Login from "./Login";
 import Home from "./Home";
 import JournalPage from "./Journal";
-import Todo from "./todolist";
+import TodoList from "./todolist";
 function App() {
   return (
     <BrowserRouter>
@@ -21,7 +21,7 @@ function App() {
         <Route path="/home/:date" element={<JournalPage />} />
         <Route path="/" element={<Chronicles />} />
         <Route path="*" element={<NotFound />} />
-        <Route path="/todo" element={<Todo />} />
+        <Route path="/TodoList" element={<TodoList />} />
         {/* <Redirect from="/" to="/login" /> */}
       </Routes>
     </BrowserRouter>

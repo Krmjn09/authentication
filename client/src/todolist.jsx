@@ -1,161 +1,73 @@
 // import React, { Component } from "react";
-import "bootstrap/dist/css/bootstrap.css";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
-import InputGroup from "react-bootstrap/InputGroup";
-import FormControl from "react-bootstrap/FormControl";
-import ListGroup from "react-bootstrap/ListGroup";
+import React, { useState } from "react";
 
-import React, { Component } from "react";
+const TodoList = () => {
+  const [tasks, setTasks] = useState([]);
+  const [newTask, setNewTask] = useState("");
 
-class Todo extends Component {
-  constructor(props) {
-    super(props);
-
-    // Setting up state
-    this.state = {
-      userInput: "",
-      list: [],
-    };
-  }
-
-  // Set a user input value
-  updateInput(value) {
-    this.setState({
-      userInput: value,
-    });
-  }
-
-  // Add item if user input in not empty
-  addItem() {
-    if (this.state.userInput !== "") {
-      const userInput = {
-        // Add a random id which is used to delete
-        id: Math.random(),
-
-        // Add a user value to list
-        value: this.state.userInput,
-      };
-
-      // Update list
-      const list = [...this.state.list];
-      list.push(userInput);
-
-      // reset state
-      this.setState({
-        list,
-        userInput: "",
-      });
-    }
-  }
-
-  // Function to delete item from list use id to delete
-  deleteItem(key) {
-    const list = [...this.state.list];
-
-    // Filter values and leave value which we need to delete
-    const updateList = list.filter((item) => item.id !== key);
-
-    // Update list in state
-    this.setState({
-      list: updateList,
-    });
-  }
-
-  editItem = (index) => {
-    const todos = [...this.state.list];
-    const editedTodo = prompt("Edit the todo:");
-    if (editedTodo !== null && editedTodo.trim() !== "") {
-      let updatedTodos = [...todos];
-      updatedTodos[index].value = editedTodo;
-      this.setState({
-        list: updatedTodos,
-      });
-    }
+  const addTask = () => {
+    if (newTask.trim() === "") return;
+    setTasks([...tasks, { text: newTask, completed: false }]);
+    setNewTask("");
   };
 
-  render() {
-    return (
-      <Container>
-        <Row
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            fontSize: "3rem",
-            fontWeight: "bolder",
-          }}
+  const toggleComplete = (index) => {
+    const updatedTasks = tasks.map((task, i) => {
+      if (i === index) {
+        return { ...task, completed: !task.completed };
+      }
+      return task;
+    });
+    setTasks(updatedTasks);
+  };
+
+  const deleteTask = (index) => {
+    setTasks(tasks.filter((_, i) => i !== index));
+  };
+
+  return (
+    <div className="container mx-auto p-4">
+      <h1 className="text-3xl font-bold text-center mb-4">To-Do List</h1>
+      <div className="mb-4">
+        <input
+          type="text"
+          className="border rounded p-2 w-full"
+          placeholder="Add a new task..."
+          value={newTask}
+          onChange={(e) => setNewTask(e.target.value)}
+        />
+        <button
+          onClick={addTask}
+          className="bg-blue-500 text-white px-4 py-2 rounded mt-2 block w-full"
         >
-          TODO LIST
-        </Row>
+          Add Task
+        </button>
+      </div>
+      <ul>
+        {tasks.map((task, index) => (
+          <li
+            key={index}
+            className={`flex justify-between items-center p-2 rounded ${
+              task.completed ? "bg-green-200 line-through" : "bg-white"
+            }`}
+          >
+            <span
+              className="flex-1"
+              onClick={() => toggleComplete(index)}
+            >
+              {task.text}
+            </span>
+            <button
+              onClick={() => deleteTask(index)}
+              className="text-red-500 ml-4"
+            >
+              Delete
+            </button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
 
-        <hr />
-        <Row>
-          <Col md={{ span: 5, offset: 4 }}>
-            <InputGroup className="mb-3">
-              <FormControl
-                placeholder="add item . . . "
-                size="lg"
-                value={this.state.userInput}
-                onChange={(item) => this.updateInput(item.target.value)}
-                aria-label="add something"
-                aria-describedby="basic-addon2"
-              />
-              <InputGroup>
-                <Button
-                  variant="dark"
-                  className="mt-2"
-                  onClick={() => this.addItem()}
-                >
-                  ADD
-                </Button>
-              </InputGroup>
-            </InputGroup>
-          </Col>
-        </Row>
-        <Row>
-          <Col md={{ span: 5, offset: 4 }}>
-            <ListGroup>
-              {/* map over and print items */}
-              {this.state.list.map((item, index) => {
-                return (
-                  <div key={index}>
-                    <ListGroup.Item
-                      variant="dark"
-                      action
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                      }}
-                    >
-                      {item.value}
-                      <span>
-                        <Button
-                          style={{ marginRight: "10px" }}
-                          variant="light"
-                          onClick={() => this.deleteItem(item.id)}
-                        >
-                          Delete
-                        </Button>
-                        <Button
-                          variant="light"
-                          onClick={() => this.editItem(index)}
-                        >
-                          Edit
-                        </Button>
-                      </span>
-                    </ListGroup.Item>
-                  </div>
-                );
-              })}
-            </ListGroup>
-          </Col>
-        </Row>
-      </Container>
-    );
-  }
-}
-
-export default Todo;
+export default TodoList;
