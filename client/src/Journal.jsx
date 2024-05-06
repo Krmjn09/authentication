@@ -6,6 +6,10 @@ import ChatBot from "react-simple-chatbot";
 import { ThemeProvider } from "styled-components";
 import "./Journal.css";
 import Navbar from "../src/components/navbar";
+import todo from "./todo.jpg"
+import emu from "./emu.jpg"
+import tracker from "./tracker.jpg"
+import journal from "./dairy.jpg"
 const steps = [
   {
     id: "0",
@@ -74,49 +78,52 @@ const JournalPage = () => {
       <Navbar />
       <div className="wrapper">
         <div className="card">
-          <img src="https://images.unsplash.com/photo-1477666250292-1419fac4c25c?auto=format&amp;fit=crop&amp;w=667&amp;q=80&amp;ixid=dW5zcGxhc2guY29tOzs7Ozs%3D" />
+          <img src={todo} alt="todo" />
           <div className="info">
-            <h1>Mountain</h1>
+            <h1><b>Todo List</b></h1>
             <p>
-              Lorem Ipsum is simply dummy text from the printing and typeseting
-              industry
+            <i>" Manage tasks with features like adding, editing, and marking tasks as complete.
+"</i>
             </p>
+            <br />
             <button>
-              <Link to={`/TodoList`}>Read More</Link>
+              <Link to={`/TodoList`}><b>Organize</b></Link>
             </button>
           </div>
         </div>
         <div className="card">
-          <img src="https://images.unsplash.com/photo-1477666250292-1419fac4c25c?auto=format&amp;fit=crop&amp;w=667&amp;q=80&amp;ixid=dW5zcGxhc2guY29tOzs7Ozs%3D" />
+          <img src={tracker} alt="" />
           <div className="info">
-            <h1>Mountain</h1>
-            <p>
-              Lorem Ipsum is simply dummy text from the printing and typeseting
-              industry
+            <h1><b>Tracker</b></h1>
+            <p><i>
+            "Monitor moods, expenses, or fitness progress with data input and visualization."
+</i>
             </p>
-            <button>Read More</button>
+            <br />
+            <button><b>Progress</b></button>
           </div>
         </div>
         <div className="card">
-          <img src="https://images.unsplash.com/photo-1425342605259-25d80e320565?auto=format&amp;fit=crop&amp;w=750&amp;q=80&amp;ixid=dW5zcGxhc2guY29tOzs7Ozs%3D" />
+          <img src={emu} />
           <div className="info">
-            <h1>Road</h1>
+            <h1>Chatbot</h1>
             <p>
-              Lorem Ipsum is simply dummy text from the printing and typeseting
-              industry
+            <i>"Provide interactive assistance and answer questions using a conversational interface."
+</i>
             </p>
-            <button>Read More</button>
+            <br />
+            <button><b>Inquire</b></button>
           </div>
         </div>
         <div className="card">
-          <img src="https://images.unsplash.com/photo-1503249023995-51b0f3778ccf?auto=format&amp;fit=crop&amp;w=311&amp;q=80&amp;ixid=dW5zcGxhc2guY29tOzs7Ozs%3D" />
+          <img src={journal} />
           <div className="info">
-            <h1>Protester</h1>
-            <p>
-              Lorem Ipsum is simply dummy text from the printing and typeseting
-              industry
-            </p>
-            <button>Read More</button>
+            <h1><b>Journal</b></h1>
+            <p><i>
+            "Record personal thoughts and experiences with date-based organization."
+            </i></p>
+            <br />
+            <button><b>Reflect</b></button>
           </div>
         </div>
       </div>
