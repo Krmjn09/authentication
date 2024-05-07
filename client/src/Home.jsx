@@ -221,8 +221,14 @@ const Calendar = () => {
   };
   const [currentDate, setCurrentDate] = useState(moment());
 
-  const startDay = currentDate.clone().startOf("month").startOf("week");
-  const endDay = currentDate.clone().endOf("month").endOf("week");
+  const startDay = currentDate
+    .clone()
+    .startOf("month")
+    .startOf("week");
+  const endDay = currentDate
+    .clone()
+    .endOf("month")
+    .endOf("week");
 
   const calendar = [];
   let day = startDay
@@ -308,8 +314,8 @@ const Calendar = () => {
                 >
                   {week.map((day, i) => {
                     const isCurrentMonth = day.isSame(currentDate, "month");
-                    const isPreviousMonth = day.isBefore(currentDate, "month");
-                    const isNextMonth = day.isAfter(currentDate, "month");
+                    // const isPreviousMonth = day.isBefore(currentDate, "month");
+                    // const isNextMonth = day.isAfter(currentDate, "month");
 
                     return (
                       <button

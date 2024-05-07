@@ -129,7 +129,9 @@ const JournalPage = () => {
             </p>
             <br />
             <button>
-              <b>Inquire</b>
+              <Link to={`/Chatbot1`}>
+                <b>Inquire</b>
+              </Link>
             </button>
           </div>
         </div>
@@ -147,7 +149,7 @@ const JournalPage = () => {
             </p>
             <br />
             <button>
-              <Link to={`/DrawingBoard`}>
+              <Link to={`/Notes`}>
                 <b>Reflect</b>
               </Link>
             </button>
