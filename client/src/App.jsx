@@ -11,6 +11,8 @@ import Login from "./Login";
 import Home from "./Home";
 import JournalPage from "./Journal";
 import TodoList from "./todolist";
+import Progress from "./Progress";
+import DrawingBoard from "./DrawingBoard";
 // import { MDBContainer, MDBRow } from 'mdb-react-ui-kit';
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
          */}
         <Route path="/TodoList" element={<TodoList />} />
         {/* <Redirect from="/" to="/login" /> */}
+        <Route path="/Progress" element={<Progress />} />
+        <Route path="/DrawingBoard" element={<DrawingBoard />} />
       </Routes>
     </BrowserRouter>
   );

@@ -6,10 +6,10 @@ import ChatBot from "react-simple-chatbot";
 import { ThemeProvider } from "styled-components";
 import "./Journal.css";
 import Navbar from "../src/components/navbar";
-import todo from "./todo.jpg"
-import emu from "./emu.jpg"
-import tracker from "./tracker.jpg"
-import journal from "./dairy.jpg"
+import todo from "./todo.jpg";
+import emu from "./emu.jpg";
+import tracker from "./tracker.jpg";
+import journal from "./dairy.jpg";
 const steps = [
   {
     id: "0",
@@ -80,27 +80,41 @@ const JournalPage = () => {
         <div className="card">
           <img src={todo} alt="todo" />
           <div className="info">
-            <h1><b>Todo List</b></h1>
+            <h1>
+              <b>Todo List</b>
+            </h1>
             <p>
-            <i>" Manage tasks with features like adding, editing, and marking tasks as complete.
-"</i>
+              <i>
+                " Manage tasks with features like adding, editing, and marking
+                tasks as complete. "
+              </i>
             </p>
             <br />
             <button>
-              <Link to={`/TodoList`}><b>Organize</b></Link>
+              <Link to={`/TodoList`}>
+                <b>Organize</b>
+              </Link>
             </button>
           </div>
         </div>
         <div className="card">
           <img src={tracker} alt="" />
           <div className="info">
-            <h1><b>Tracker</b></h1>
-            <p><i>
-            "Monitor moods, expenses, or fitness progress with data input and visualization."
-</i>
+            <h1>
+              <b>Tracker</b>
+            </h1>
+            <p>
+              <i>
+                "Monitor moods, expenses, or fitness progress with data input
+                and visualization."
+              </i>
             </p>
             <br />
-            <button><b>Progress</b></button>
+            <button>
+              <Link to={`/Progress`}>
+                <b>Progress</b>
+              </Link>
+            </button>
           </div>
         </div>
         <div className="card">
@@ -108,22 +122,35 @@ const JournalPage = () => {
           <div className="info">
             <h1>Chatbot</h1>
             <p>
-            <i>"Provide interactive assistance and answer questions using a conversational interface."
-</i>
+              <i>
+                "Provide interactive assistance and answer questions using a
+                conversational interface."
+              </i>
             </p>
             <br />
-            <button><b>Inquire</b></button>
+            <button>
+              <b>Inquire</b>
+            </button>
           </div>
         </div>
         <div className="card">
           <img src={journal} />
           <div className="info">
-            <h1><b>Journal</b></h1>
-            <p><i>
-            "Record personal thoughts and experiences with date-based organization."
-            </i></p>
+            <h1>
+              <b>Journal</b>
+            </h1>
+            <p>
+              <i>
+                "Record personal thoughts and experiences with
+                date-based organization."
+              </i>
+            </p>
             <br />
-            <button><b>Reflect</b></button>
+            <button>
+              <Link to={`/DrawingBoard`}>
+                <b>Reflect</b>
+              </Link>
+            </button>
           </div>
         </div>
       </div>
