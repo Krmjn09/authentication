@@ -1,9 +1,10 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Card, CardBody, CardTitle } from "react-bootstrap";
 import Navbar from "../src/components/navbar";
 import axios from "axios";
 import "./Progress.css";
 import MoodSelector from "./MoodSelector";
+import StepCounter from "./step-counter"; // Import the StepCounter component
 
 const Progress = () => {
   const [weather, setWeather] = useState("Loading...");
@@ -65,52 +66,23 @@ const Progress = () => {
             </CardBody>
           </Card>
         </div>
-        {/* Add other progress components here */ <div className="progress-weather">
-          <Card
-            style={{ width: "18rem" }}
-            className={`${weather} ${weatherBg} ${isHovered ? "" : "no-hover"}`}
-            onMouseEnter={handleCardHover}
-            onMouseLeave={handleCardLeave}
-          >
-            <CardBody>
-              <CardTitle className="weather-text" id="hell">
-                <b>&quot;Current Weather&quot;</b>
-              </CardTitle>
-              <p className="weather-text">{weather}</p>
-            </CardBody>
-          </Card>
-        </div>}
-        {
-           <div className="progress-weather">
-           <Card
-             style={{ width: "18rem" }}
-             className={`${weather} ${weatherBg} ${isHovered ? "" : "no-hover"}`}
-             onMouseEnter={handleCardHover}
-             onMouseLeave={handleCardLeave}
-           >
-             <CardBody>
-               <CardTitle className="weather-text" id="hell">
-                 <b>&quot;Current Weather&quot;</b>
-               </CardTitle>
-               <p className="weather-text">{weather}</p>
-             </CardBody>
-           </Card>
-         </div>
-        }
-        
-          {
-            <div className="progress-weather">
-            <MoodSelector
-              weather={weather}
-              weatherBg={weatherBg}
-              isHovered={isHovered}
-              handleCardHover={handleCardHover}
-              handleCardLeave={handleCardLeave}
-            />
-          </div>
-          }
-          
-        
+        {/* Add other progress components here */}
+        <div className="progress-weather">
+          <StepCounter
+            isHovered={isHovered}
+            handleCardHover={handleCardHover}
+            handleCardLeave={handleCardLeave}
+          />
+        </div>
+        <div className="progress-weather">
+          <MoodSelector
+            weather={weather}
+            weatherBg={weatherBg}
+            isHovered={isHovered}
+            handleCardHover={handleCardHover}
+            handleCardLeave={handleCardLeave}
+          />
+        </div>
       </div>
     </div>
   );
