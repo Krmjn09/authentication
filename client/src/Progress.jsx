@@ -5,6 +5,7 @@ import axios from "axios";
 import "./Progress.css";
 import MoodSelector from "./MoodSelector";
 import StepCounter from "./step-counter"; // Import the StepCounter component
+import ExpenditureRange from "./ExpenditureRange"; // Import the ExpenditureRange component
 
 const Progress = () => {
   const [weather, setWeather] = useState("Loading...");
@@ -20,7 +21,7 @@ const Progress = () => {
         navigator.geolocation.getCurrentPosition(async (position) => {
           const { latitude, longitude } = position.coords;
           const apiKey = "6357b7d1b9dd0385a48600971b89a509";
-          const apiUrl =` https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
+          const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
           const response = await axios.get(apiUrl);
           const { main } = response.data.weather[0];
           setWeather(main);
@@ -69,6 +70,13 @@ const Progress = () => {
         {/* Add other progress components here */}
         <div className="progress-weather">
           <StepCounter
+            isHovered={isHovered}
+            handleCardHover={handleCardHover}
+            handleCardLeave={handleCardLeave}
+          />
+        </div>
+        <div className="progress-weather">
+          <ExpenditureRange
             isHovered={isHovered}
             handleCardHover={handleCardHover}
             handleCardLeave={handleCardLeave}

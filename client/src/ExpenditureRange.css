@@ -1,13 +1,12 @@
-.step-counter{
-    pointer-events: none; 
+.expenditure-range{
+    pointer-events: none;
 }
-
 
 .dd{
     position: relative;
     z-index: 3;  
 }
 
-.step-card{
+.expenditure-card {
     position: -1;
 }

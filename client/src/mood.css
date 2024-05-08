@@ -1,5 +1,12 @@
 .mood-selector{
     pointer-events: none;
-   
- 
+}
+
+.dd{
+    position: relative;
+    z-index: 3;  
+}
+
+.mood-card{
+    position: -1;
 }

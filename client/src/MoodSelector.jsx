@@ -26,7 +26,7 @@ const MoodSelector = ({ weather, weatherBg, isHovered, handleCardHover, handleCa
         {selectedMood === "Calm" && <img src={CalmImage} alt="Calm mood" className="mood-image" />}
         <CardBody>
           <CardTitle>Mood</CardTitle>
-          <Dropdown as={Card.Text}>
+          <Dropdown as={Card.Text} className="dd">
             <DropdownButton id="mood-dropdown" title={selectedMood}>
               <DropdownItem
                 as="button"

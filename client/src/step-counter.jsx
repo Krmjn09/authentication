@@ -20,7 +20,7 @@ const StepCounter = ({ isHovered, handleCardHover, handleCardLeave }) => {
         <img src={exp} alt="" />
         <CardBody>
           <CardTitle>Step Count</CardTitle>
-          <Dropdown as={Card.Text}>
+          <Dropdown as={Card.Text} className="dd" >
             <DropdownButton id="step-dropdown" title={stepCount}>
               <DropdownItem
                 as="button"
