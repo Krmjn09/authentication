@@ -18,6 +18,7 @@ body {
   gap: 20px;
 }
 .progress {
+  color: #2f3542;
   width: 100%;
   height: 100%;
   display: flex;
@@ -113,12 +114,12 @@ body {
 
 .weather.sunny #weather-image {
   display: block; /* Show image for sunny weather */
-  content: url("path/to/sunny.png"); /* Replace with your image path */
+  content: url("./sunny.jpg"); /* Replace with your image path */
 }
 
 .weather.cloudy #weather-image {
   display: block;
-  content: url("path/to/cloudy.png"); /* Replace with your image path */
+  content: url("./cloudy.jpg"); /* Replace with your image path */
 }
 
 /* Add similar styles for other weather conditions */
@@ -154,4 +155,84 @@ body {
   height: 100px;
   /* display: none; */
   opacity: 0.95; /* Add opacity property to make the image transparent */
+}
+
+/* Default style for the Card */
+.weather {
+  padding: 20px;
+  border-radius: 8px;
+  background-size: cover;
+  background-position: center;
+  transition: background-image 0.3s ease;
+}
+
+/* Style for the Card when hovered */
+.weather:hover {
+  cursor: pointer;
+}
+
+/* Style for sunny weather */
+.bg-sunny {
+  background-image: url("./sunny.jpg");
+  color: #ffffff; /* Adjust text color for better readability */
+}
+
+/* Style for cloudy weather */
+.bg-cloudy {
+  background-image: url("./cloudy.jpg");
+  color: #ffffff; /* Adjust text color for better readability */
+}
+
+/* Style for rainy weather */
+.bg-rainy {
+  background-image: url("./rainy.jpg");
+  color: #ffffff; /* Adjust text color for better readability */
+}
+
+/* Style for snowy weather */
+.bg-snowy {
+  background-image: url("./snowy.jpg");
+  color: #2f3542; /* Adjust text color for better readability */
+}
+
+.abc {
+  color: #2f3542;
+  background-color: antiquewhite;
+}
+
+.weather {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  border-radius: 8px;
+  background-size: cover;
+  background-position: center;
+  transition: background-image 0.3s ease;
+}
+
+.weather:hover {
+  cursor: pointer;
+}
+
+.weather-text {
+  font-size: 24px;
+  font-weight: bold;
+  color: #1d0000; /* White text color */
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50%;
+}
+
+#hell {
+  font-size: 20px;
+  font-weight: bold;
+  color: #1d0000; /* White text color */
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0%;
 }

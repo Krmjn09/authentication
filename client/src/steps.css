@@ -1,0 +1,16 @@
+/* .sbutton{
+    position: absolute;
+    justify-content: center;
+    pointer-events: all;
+    
+} */
+
+/* #steps{
+    pointer-events: all;
+
+} */
+.stepform{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,132 +1,119 @@
-import React from "react";
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import Card from "react-bootstrap/Card";
-import ChatBot from "react-simple-chatbot";
-import { ThemeProvider } from "styled-components";
-import updateWeather from "./weather-update.png";
-import "./Progress.css";
+import { useState, useEffect } from "react";
+import { Card, CardBody, CardTitle } from "react-bootstrap";
 import Navbar from "../src/components/navbar";
-import {
-  CardBody,
-  CardTitle,
-  Dropdown,
-  DropdownButton,
-  DropdownItem,
-} from "react-bootstrap";
-// import { useState } from "react";
-// import { Card } from "react-bootstrap";
+import axios from "axios";
+import "./Progress.css";
+import MoodSelector from "./MoodSelector";
 
 const Progress = () => {
-  //   const [progress, setProgress] = useState(0);
-  const [weather, setWeather] = React.useState("Select Weather"); // Initial dropdown selection
-  const [isHovered, setIsHovered] = React.useState(false); // State for hover effect
+  const [weather, setWeather] = useState("Loading...");
+  const [isHovered, setIsHovered] = useState(false);
+  const [weatherBg, setWeatherBg] = useState(""); // State for weather background class
 
-  const handleWeatherChange = (selectedWeather) => setWeather(selectedWeather);
   const handleCardHover = () => setIsHovered(true);
   const handleCardLeave = () => setIsHovered(false);
-  // Remove the unused variable and setter function
-  // const [transparency, setTransparency] = React.useState(false);
+
+  useEffect(() => {
+    const fetchWeather = async () => {
+      try {
+        navigator.geolocation.getCurrentPosition(async (position) => {
+          const { latitude, longitude } = position.coords;
+          const apiKey = "6357b7d1b9dd0385a48600971b89a509";
+          const apiUrl =` https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
+          const response = await axios.get(apiUrl);
+          const { main } = response.data.weather[0];
+          setWeather(main);
+
+          // Set background class based on weather condition
+          if (main === "Clear") {
+            setWeatherBg("bg-sunny");
+          } else if (main === "Clouds") {
+            setWeatherBg("bg-cloudy");
+          } else if (main === "Rain" || main === "Drizzle") {
+            setWeatherBg("bg-rainy");
+          } else if (main === "Snow") {
+            setWeatherBg("bg-snowy");
+          } else {
+            setWeatherBg("tracker"); // Default background image
+          }
+        });
+      } catch (error) {
+        console.error("Error fetching weather:", error);
+        setWeather("Error");
+      }
+    };
+
+    fetchWeather();
+  }, []);
+
   return (
-    <>
-      <div className="prog">
-        <Navbar />
-        <div className="progress">
-          <div className="progress-weather">
-            <Card
-              style={{ width: "18rem" }}
-              className={`weather ${isHovered ? "" : "no-hover"}`} // Toggle hover class
-              onMouseEnter={handleCardHover}
-              onMouseLeave={handleCardLeave}
-            >
-              <img
-                src={updateWeather}
-                alt="Card image"
-                className="weather-image"
-              />
-              <CardBody>
-                <CardTitle>Weather</CardTitle>
-                <Dropdown as={Card.Text}>
-                  <DropdownButton id="weather-dropdown" title={weather}>
-                    <DropdownItem
-                      as="button"
-                      onClick={() => handleWeatherChange("Sunny")}
-                    >
-                      Sunny
-                    </DropdownItem>
-                    <DropdownItem
-                      as="button"
-                      onClick={() => handleWeatherChange("Cloudy")}
-                    >
-                      Cloudy
-                    </DropdownItem>
-                    <DropdownItem
-                      as="button"
-                      onClick={() => handleWeatherChange("Rainy")}
-                    >
-                      Rainy
-                    </DropdownItem>
-                    <DropdownItem
-                      as="button"
-                      onClick={() => handleWeatherChange("Snowy")}
-                    >
-                      Snowy
-                    </DropdownItem>
-                    <DropdownItem
-                      as="button"
-                      onClick={() => handleWeatherChange("Windy")}
-                    >
-                      Windy
-                    </DropdownItem>
-
-                    {/* Add more weather options as needed */}
-                  </DropdownButton>
-                </Dropdown>
-              </CardBody>
-            </Card>
-          </div>
-
-          <div className="progress-Steps">
-            <Card style={{ width: "18rem" }} className="weather">
-              <Card.Body>
-                <Card.Title>Steps</Card.Title>
-                <Card.Text></Card.Text>
-              </Card.Body>
-            </Card>
-          </div>
-          {/* <div className="progress-">
-            <Card style={{ width: "18rem" }} className="weather">
-              <Card.Body>
-                <Card.Title>Weather</Card.Title>
-                <Card.Text></Card.Text>
-              </Card.Body>
-            </Card>
-          </div> */}
-          {/* <div className="progress-weather">
-            <Card style={{ width: "18rem" }} className="weather">
-              <Card.Body>
-                <Card.Title>Weather</Card.Title>
-                <Card.Text></Card.Text>
-              </Card.Body>
-            </Card>
-          </div> */}
-          {/* <Card style={{ width: "18rem" }}>
-            <Card.Body>
-              <Card.Title>Progress</Card.Title>
-              <Card.Text>
-                <h1>{progress}%</h1>
-                <button onClick={() => setProgress(progress + 10)}>
-                  Add 10%
-                </button>
-                <button onClick={() => setProgress(progress - 10)}>
-                  Subtract 10%
-                </button>
-              </Card.Text>
-            </Card.Body>
-        </Card> */}
+    <div className="prog">
+      <Navbar />
+      <div className="progress">
+        <div className="progress-weather">
+          <Card
+            style={{ width: "18rem" }}
+            className={`${weather} ${weatherBg} ${isHovered ? "" : "no-hover"}`}
+            onMouseEnter={handleCardHover}
+            onMouseLeave={handleCardLeave}
+          >
+            <CardBody>
+              <CardTitle className="weather-text" id="hell">
+                <b>&quot;Current Weather&quot;</b>
+              </CardTitle>
+              <p className="weather-text">{weather}</p>
+            </CardBody>
+          </Card>
         </div>
+        {/* Add other progress components here */ <div className="progress-weather">
+          <Card
+            style={{ width: "18rem" }}
+            className={`${weather} ${weatherBg} ${isHovered ? "" : "no-hover"}`}
+            onMouseEnter={handleCardHover}
+            onMouseLeave={handleCardLeave}
+          >
+            <CardBody>
+              <CardTitle className="weather-text" id="hell">
+                <b>&quot;Current Weather&quot;</b>
+              </CardTitle>
+              <p className="weather-text">{weather}</p>
+            </CardBody>
+          </Card>
+        </div>}
+        {
+           <div className="progress-weather">
+           <Card
+             style={{ width: "18rem" }}
+             className={`${weather} ${weatherBg} ${isHovered ? "" : "no-hover"}`}
+             onMouseEnter={handleCardHover}
+             onMouseLeave={handleCardLeave}
+           >
+             <CardBody>
+               <CardTitle className="weather-text" id="hell">
+                 <b>&quot;Current Weather&quot;</b>
+               </CardTitle>
+               <p className="weather-text">{weather}</p>
+             </CardBody>
+           </Card>
+         </div>
+        }
+        
+          {
+            <div className="progress-weather">
+            <MoodSelector
+              weather={weather}
+              weatherBg={weatherBg}
+              isHovered={isHovered}
+              handleCardHover={handleCardHover}
+              handleCardLeave={handleCardLeave}
+            />
+          </div>
+          }
+          
+        
       </div>
-    </>
+    </div>
   );
 };
+
 export default Progress;
