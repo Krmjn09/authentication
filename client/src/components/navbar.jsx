@@ -14,7 +14,7 @@ const Navbar = () => {
       <nav>
         <div className="bg-gray-800 text-white fixed top-0 left-0 w-full z-60">
           <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-            <Link to="/" className="text-xl font-bold text-white ">
+            <Link to="/home" className="text-xl font-bold text-white ">
               Chronicles
             </Link>
             <nav className="hidden md:flex space-x-4">
