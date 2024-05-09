@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Signup from "./Signup";
 // import { useState } from "react";
 import "./style.css";
+
 import Chronicles from "./views/Chronicles";
 import NotFound from "./views/not-found";
 import "./input.css";
