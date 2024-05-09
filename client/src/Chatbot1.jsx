@@ -6,6 +6,7 @@ function Chatbot1() {
     <>
       <div className="chatbody">
         {/* <MyChatBot /> */}
+
         <button className="chatbot-toggler">
           <span className="material-symbols-rounded">mode_comment</span>
           <span className="material-symbols-outlined">close</span>
