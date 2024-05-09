@@ -1,0 +1,83 @@
+/* Import desired font if needed */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap');
+
+.chat-interface {
+  display: flex;
+  flex-direction: column;
+  /* width: px; Increased width for better readability */
+  height: fit-content;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  background-color: #fff; /* Clean white background for professionalism */
+  font-family: 'Open Sans', sans-serif; /* Professional and clear font */
+}
+
+.chat-area {
+  flex: 1;
+  overflow-y: scroll;
+  /* Consider adding a subtle border for message separation */
+}
+
+.chat-message {
+  padding: 15px; /* Increased padding for comfort */
+  margin-bottom: 10px; /* Maintain spacing between messages */
+  border-radius: 10px;
+  /* Consider using a subtle border-color based on user/bot */
+}
+
+.user-message {
+  background-color: #f5f5f5; /* Light gray for user messages */
+  text-align: right;
+}
+
+.bot-message {
+  background-color: #f0f0f0; /* Lighter gray for bot messages */
+  text-align: left;
+}
+
+.chat-topic {
+  font-weight: bold;
+  margin-bottom: 15px; /* Increased spacing for prominence */
+  color: #333; /* Darker text for better contrast */
+  font-size: 1.2em;
+}
+
+.options {
+  display: flex;
+  justify-content: space-between; /* Distribute buttons evenly */
+  margin-top: 15px; /* Maintain spacing */
+}
+
+.options button {
+  margin: 5px; /* Maintain spacing between buttons */
+  padding: 12px 25px; /* Adjusted padding for button size */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px; /* Slightly larger font for readability */
+  transition: background-color 0.2s ease-in-out;
+}
+
+/* Professional Green & Red Color Scheme */
+.options button:nth-child(even) { /* Every even button (2nd, 4th, etc.) */
+  background-color: #90EE90; /* Light green */
+  color: #333; /* Darker text for contrast */
+}
+
+.options button:nth-child(odd) { /* Every odd button (1st, 3rd, etc.) */
+  background-color: #F08080; /* Light red */
+  color: #fff; /* White text for contrast */
+}
+
+.options button:hover {
+  background-color: #d0e0d0; /* Light gray hover effect for both buttons */
+}
+
+.options button:focus {
+  outline: none; /* Remove default focus outline */
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2); /* Subtle focus shadow */
+}

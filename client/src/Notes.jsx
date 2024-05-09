@@ -11,6 +11,7 @@ function Notes() {
   const [activeNote, setActiveNote] = useState(false);
 
   useEffect(() => {
+    
     localStorage.setItem("notes", JSON.stringify(notes));
   }, [notes]);
 
