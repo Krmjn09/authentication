@@ -48,32 +48,61 @@ const Login = () => {
       backgroundColor: "#3f5baf", // Slightly darker blue on hover
     },
   };
-  // const [name, setName] = useState();
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  // const styles = {
+  //   navbar: {
+  //     backgroundColor: "#f8f9fa",
+  //     padding: "10px 0",
+  //     boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+  //   },
+  //   navbarBrand: {
+  //     fontWeight: "bold",
+  //     color: "#333",
+  //   },
+  //   navBtn: {
+  //     color: "#333",
+  //     textDecoration: "none",
+  //   },
+  //   container: {
+  //     backgroundColor: "#f8f9fa",
+  //     height: "100vh",
+  //   },
+  // };
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  const handleSubmit = (e) => {
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // const navigate = useNavigate();
-    axios
-      .post("http://localhost:3001/login", { name, email, password })
-      .then((result) => {
-        console.log(result);
-        if (result.data === "Login Successfull") {
-          navigate("/home");
-        }
-      })
-      .catch((err) => console.log(err));
+    if (!email || !password) {
+      alert("Please enter both email and password");
+      return;
+    }
+    try {
+      const response = await axios.post("http://localhost:3001/login", {
+        email,
+        password,
+      });
+      if (response.data === "Login Successfull") {
+        navigate("/home");
+      } else {
+        alert(response.data);
+      }
+    } catch (error) {
+      console.error("Error occurred:", error);
+      alert("An error occurred while logging in");
+    }
   };
+
   return (
     <>
+      {/* Your navigation bar JSX */}
       <nav style={styles.navbar}>
         <a href="#" className="navbar-brand" style={styles.navbarBrand}>
           Chronicles
         </a>
         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
           <li className="nav-item">
-            {/* <a className={`nav-link ${styles.navLinkActive}`} href="#">
+            {/* <a className={nav-link ${styles.navLinkActive}} href="#">
               Home
             </a> */}
           </li>
@@ -84,7 +113,7 @@ const Login = () => {
         </Link>
       </nav>
       <div style={styles.container}>
-        <div className="d-flex justify-content-center align-items-center  vh-100 vw-100">
+        <div className="d-flex justify-content-center align-items-center vh-100 vw-100">
           <div className="bg-white p-3 rounded w-25">
             <h2>Login</h2>
             <form onSubmit={handleSubmit}>
@@ -98,6 +127,7 @@ const Login = () => {
                   placeholder="Enter Email"
                   autoComplete="off"
                   name="email"
+                  value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
@@ -110,16 +140,13 @@ const Login = () => {
                   className="form-control rounded-10"
                   placeholder="Enter Password"
                   name="password"
+                  value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
-              <Link
-                to="/home"
-                type="submit"
-                className="btn btn-primary rounded-10"
-              >
+              <button type="submit" className="btn btn-primary rounded-10">
                 Login
-              </Link>
+              </button>
             </form>
             <p>Already have an account</p>
 
@@ -135,4 +162,5 @@ const Login = () => {
     </>
   );
 };
+
 export default Login;
