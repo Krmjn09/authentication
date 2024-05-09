@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Card, CardBody, CardTitle, Dropdown, DropdownButton, DropdownItem } from "react-bootstrap";
 import "./ExpenditureRange.css"; // Assuming you have a CSS file for styling
-import exp from "./tracker.jpg"; // Assuming you have an image for the expenditure range
+import exp from "./exp.jpg"; // Assuming you have an image for the expenditure range
 
 const ExpenditureRange = ({ isHovered, handleCardHover, handleCardLeave }) => {
   const [expenditureRange, setExpenditureRange] = useState("Select Expenditure Range");
@@ -23,17 +23,38 @@ const ExpenditureRange = ({ isHovered, handleCardHover, handleCardLeave }) => {
             <DropdownButton id="expenditure-dropdown" title={expenditureRange}>
               <DropdownItem
                 as="button"
-                onClick={() => handleExpenditureRangeChange("$0 - $100")}
+                onClick={() => handleExpenditureRangeChange("₹0 - ₹200")}
               >
-                $0 - $100
+                ₹0 - ₹200
               </DropdownItem>
               <DropdownItem
                 as="button"
-                onClick={() => handleExpenditureRangeChange("$100 - $200")}
+                onClick={() => handleExpenditureRangeChange("₹200 - ₹400")}
               >
-                $100 - $200
+                ₹200 - ₹400
               </DropdownItem>
-              {/* Add more expenditure range options as needed */}
+              { <DropdownItem
+                as="button"
+                onClick={() => handleExpenditureRangeChange("₹400 - ₹800")}
+              >
+                ₹400 - ₹800
+              </DropdownItem>/* Add more expenditure range options as needed */}
+              {
+                 <DropdownItem
+                 as="button"
+                 onClick={() => handleExpenditureRangeChange("₹800 - ₹1200")}
+               >
+                 ₹800 - ₹1200
+               </DropdownItem>
+              }
+              {
+                 <DropdownItem
+                 as="button"
+                 onClick={() => handleExpenditureRangeChange("more than ₹1200")}
+               >
+                 more than ₹1200
+               </DropdownItem>
+              }
             </DropdownButton>
           </Dropdown>
         </CardBody>
