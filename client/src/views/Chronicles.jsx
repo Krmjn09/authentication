@@ -548,20 +548,23 @@ const Chronicles = () => {
         <footer className="footerContainer home-footer1">
           <div className="home-container31">
             <span className="logo">CHRONICLES</span>
-            <nav className="home-nav1">
+            <span>
+              <div>Kriti Mahajan</div> <div>Gazal</div> <div>Ayush Mahajan</div><div>Vishal Kamboj</div>
+            </span>
+            {/* <nav className="home-nav1">
               <span className="bodySmall">About</span>
               <span className="home-nav221 bodySmall">Settings</span>
               <span className="home-nav321 bodySmall">Profile</span>
               <span className="home-nav421 bodySmall">Log Out</span>
               <span className="home-nav521 bodySmall">Blog</span>
-            </nav>
+            </nav> */}
           </div>
           <div className="home-separator"></div>
           <div className="home-container32">
             <span className="bodySmall home-text89">
-              © 2023 myCompany, All Rights Reserved.
+              © 2024 Team - 8 - GVAK, All Rights Reserved.
             </span>
-            <div className="home-icon-group1">
+            {/* <div className="home-icon-group1">
               <svg
                 viewBox="0 0 950.8571428571428 1024"
                 className="home-icon10 socialIcons"
@@ -580,7 +583,7 @@ const Chronicles = () => {
               >
                 <path d="M548 6.857v150.857h-89.714c-70.286 0-83.429 33.714-83.429 82.286v108h167.429l-22.286 169.143h-145.143v433.714h-174.857v-433.714h-145.714v-169.143h145.714v-124.571c0-144.571 88.571-223.429 217.714-223.429 61.714 0 114.857 4.571 130.286 6.857z"></path>
               </svg>
-            </div>
+            </div> */}
           </div>
         </footer>
       </div>

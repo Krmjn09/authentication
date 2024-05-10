@@ -13,42 +13,73 @@ import journal from "./dairy.jpg";
 const steps = [
   {
     id: "0",
-    message: "Hey Geek!",
-
-    // This calls the next id
-    // i.e. id 1 in this case
+    message: "Hello there! 😊 What's your name?",
     trigger: "1",
   },
   {
     id: "1",
-
-    // This message appears in
-    // the bot chat bubble
-    message: "Please write your username",
+    user: true,
     trigger: "2",
   },
   {
     id: "2",
-
-    // Here we want the user
-    // to enter input
-    user: true,
+    message: "Hi {previousValue}! How can I assist you today?",
     trigger: "3",
   },
   {
     id: "3",
-    message: " hi {previousValue}, how can I help you?",
-    trigger: 4,
+    options: [
+      {
+        value: "new_entry",
+        label: "Create a new journal entry",
+        trigger: "new_entry",
+      },
+      {
+        value: "edit_entry",
+        label: "Edit or delete a journal entry",
+        trigger: "edit_entry",
+      },
+      {
+        value: "customize",
+        label: "Customize journal entries",
+        trigger: "customize",
+      },
+      { value: "trackers", label: "Learn about trackers", trigger: "trackers" },
+      {
+        value: "security",
+        label: "Data security information",
+        trigger: "security",
+      },
+    ],
   },
   {
-    id: "4",
-    options: [
-      // When we need to show a number of
-      // options to choose we create alist
-      // like this
-      { value: 1, label: "View Courses" },
-      { value: 2, label: "Read Articles" },
-    ],
+    id: "new_entry",
+    message:
+      "To create a new journal entry, go to the calendar and select the date you want to write about. Click on that date to start writing your entry.",
+    end: true,
+  },
+  {
+    id: "edit_entry",
+    message:
+      "You can edit or delete a journal entry by going to the calendar, clicking on the date of the entry you want to modify, and then selecting the edit or delete option.",
+    end: true,
+  },
+  {
+    id: "customize",
+    message:
+      "You can customize your journal entries by adding photos, changing fonts, and organizing your entries using different categories. Explore the settings to personalize your journal.",
+    end: true,
+  },
+  {
+    id: "trackers",
+    message:
+      "Trackers are tools that help you monitor and track specific aspects of your life, such as mood, habits, or goals. They provide insights into your daily routines and progress.",
+    end: true,
+  },
+  {
+    id: "security",
+    message:
+      "Your journaling data is secure and encrypted. We take data privacy seriously to ensure the confidentiality of your entries. You can adjust privacy settings in your profile for added security.",
     end: true,
   },
 ];
