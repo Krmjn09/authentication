@@ -78,10 +78,13 @@ const Login = () => {
       return;
     }
     try {
-      const response = await axios.post("http://localhost:3001/login", {
-        email,
-        password,
-      });
+      const response = await axios.post(
+        "https://authentication-2knp.vercel.app/login",
+        {
+          email,
+          password,
+        }
+      );
       if (response.data === "Login Successfull") {
         navigate("/home");
       } else {
