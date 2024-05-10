@@ -12,7 +12,7 @@ const Sidebar = ({
   return (
     <div className="app-sidebar">
       <div className="app-sidebar-header">
-        <h1>Notes</h1>
+        <h1>Journal Entry</h1>
         <button onClick={onAddNote}>Add</button>
       </div>
       <div className="app-sidebar-notes">
@@ -24,8 +24,7 @@ const Sidebar = ({
           >
             <div className="sidebar-note-title">
               <strong>{title}</strong>
-              <button onClick={() => onDeleteNote(id)}>Delete</button> // Remove
-              unused 'e' parameter
+              <button onClick={() => onDeleteNote(id)}>Delete</button> 
             </div>
 
             <p>{body && body.substr(0, 100) + "..."}</p>
