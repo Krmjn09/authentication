@@ -11,7 +11,11 @@ export default function Signup() {
     e.preventDefault();
     // const navigate = useNavigate();
     axios
-      .post("http://localhost:3001/register", { name, email, password })
+      .post("https://vqwj9lgw-3001.inc1.devtunnels.ms//register", {
+        name,
+        email,
+        password,
+      })
       .then((result) => {
         console.log(result);
         navigate("/");
