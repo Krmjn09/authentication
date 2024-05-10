@@ -130,7 +130,7 @@ const JournalPage = () => {
             <br />
             <button>
               <Link to={`/Chatbot1`}>
-                <b>Inquire</b>
+                <b>Click EMO</b>
               </Link>
             </button>
           </div>

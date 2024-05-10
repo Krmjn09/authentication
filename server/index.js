@@ -1,10 +1,10 @@
-
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const RegisterModel = require("./modals/Register");
 const NotesModel = require("./modals/Notes");
-
+const { json } = require("express");
+const ProgressModel = require("./modals/Progress");
 const app = express();
 
 app.use(cors());
@@ -26,6 +26,23 @@ app.post("/register", (req, res) => {
     .catch((err) => res.json(err));
 });
 
+app.post("/addProgress", (req, res) => {
+  Progress.create(req.body)
+    .then((data) => res.json(data))
+    .catch((err) => res.status(500).json(err));
+});
+
+// app.put("/updateProgress/:id", (req, res) => {
+//   Progress.findByIdAndUpdate(req.params.id, req.body, { new: true })
+//     .then((data) => res.json(data))
+//     .catch((err) => res.status(500).json(err));
+// });
+
+// app.delete("/deleteProgress/:id", (req, res) => {
+//   Progress.findByIdAndDelete(req.params.id)
+//     .then((data) => res.json(data))
+//     .catch((err) => res.status(500).json(err));
+// });
 app.post("/login", (req, res) => {
   const { email, password } = req.body;
   RegisterModel.findOne({ email, password }).then((data) => {

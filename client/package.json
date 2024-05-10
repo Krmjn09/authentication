@@ -32,7 +32,8 @@
     "react-simple-chatbot": "^0.6.1",
     "react-svg": "^16.1.34",
     "react-toastify": "^10.0.5",
-    "react-uuid": "^2.0.0"
+    "react-uuid": "^2.0.0",
+    "reactstrap": "^9.2.2"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
