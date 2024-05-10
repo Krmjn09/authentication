@@ -10,6 +10,7 @@ import todo from "./todo.jpg";
 import emu from "./emu.jpg";
 import tracker from "./tracker.jpg";
 import journal from "./dairy.jpg";
+import imgs from "./chatbotimage.png";
 const steps = [
   {
     id: "0",
@@ -98,7 +99,7 @@ const theme = {
 
 // Set some properties of the bot
 const config = {
-  botAvatar: "./chatbotimage.png",
+  botAvatar: imgs,
   floating: true,
 };
 
